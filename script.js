@@ -5,8 +5,9 @@ var startTitle = document.getElementById("start-title");
 var questionContainer = document.getElementById("question-container");
 var endGameEl = document.getElementById("end-game");
 var restartBtn = document.getElementById("restart-quiz");
-var resultsContainer = document.getElementById("results");
 var scoreEl = document.getElementById("score");
+var submitScoreForm = document.getElementById("submit-score");
+var viewHighscores = document.getElementById("view-highscores");
 
 //Game variables
 var currentQuestion = 0;
@@ -63,6 +64,7 @@ function startGame() {
   //show timer by removing class'hidden'
   timerEl.textContent = `Time left: ${secondsRemaining}`;
   timerEl.classList.remove("hidden");
+  viewHighscores.classList.add("hidden");
   //start the timer
   timer = setInterval(function () {
     secondsRemaining--;
@@ -125,31 +127,40 @@ function endGame() {
   clearInterval(timer);
   questionContainer.classList.add("hidden");
   endGameEl.classList.remove("hidden");
-}
-//marks correct answer
-for (let i = 0; i < correctAnswer; i++) {
-  optionBtns[i].addEventListener("click", function (e) {
-    let userAnswer = e.target.attributes.data.value;
-  });
-}
-
-//show scores
-function showResults() {
-  submitButton.addEventListener("click", showResults);
+  restartBtn.classList.remove("hidden");
+  submitScoreForm.classList.remove("hidden");
+  viewHighscores.classList.remove("hidden");
 }
 
 //restart quiz button
-// restartBtn.addEventListener("click", start - title);
-// function restartQuiz();
+restartBtn.addEventListener("click", resetApp);
 
-//if the answer is incorrect, loose 15 seconds and go to the next question
+function resetApp() {
+  //hide the end-game element
+  endGameEl.classList.add("hidden");
+  restartBtn.classList.add("hidden");
+  secondsRemaining = 75;
+  score = 0;
+  currentQuestion = 0;
 
-// let subtract = timerEl.subtract(15);
-// console.log(format);
-
-//if all questions are answered correctly- game is over
+  startTitle.classList.remove("hidden");
+  startBtn.classList.remove("hidden");
+  timerEl.classList.add("hidden");
+  scoreEl.classList.add("hidden");
+  submitScoreForm.classList.add("hidden");
+}
 
 //score and initial are kept in the local storage
+submitScoreForm.addEventListener("submit", saveScoreToStorage);
 
-//at the end of the quiz
-//view high scores button
+function saveScoreToStorage(e) {
+  e.preventDefault();
+  const initials = e.target.children[0].value;
+  const scoreObject = { initials, score };
+  let scoresToStore = [];
+  if (localStorage.getItem("savedScores")) {
+    scoresToStore = JSON.parse(localStorage.getItem("savedScores"));
+  }
+  scoresToStore.push(scoreObject);
+  localStorage.setItem("savedScores", JSON.stringify(scoresToStore));
+}
