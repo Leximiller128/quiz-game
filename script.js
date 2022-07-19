@@ -4,6 +4,7 @@ var timerEl = document.getElementById("timerEl");
 var startTitle = document.getElementById("start-title");
 var questionContainer = document.getElementById("question-container");
 var endGameEl = document.getElementById("end-game");
+var restartBtn = document.getElementById("restart-quiz");
 
 //Game variables
 var currentQuestion = 0;
@@ -85,7 +86,7 @@ function showQuestion() {
   for (let i = 0; i < optionBtns.length; i++) {
     optionBtns[i].addEventListener("click", function (e) {
       let userAnswer = e.target.attributes.data.value;
-      //if the answer is correct then will moveto current question
+      //if the answer is correct then will move to current question
       //else subtract 10 seconds and move on to next question
       currentQuestion++;
       //if answer is correct, go to the next question
@@ -104,6 +105,9 @@ function endGame() {
   questionContainer.classList.add("hidden");
   endGameEl.classList.remove("hidden");
 }
+
+restartBtn.addEventListener("click", start - title);
+function restartQuiz();
 
 //if the answer is incorrect, loose 15 seconds and go to the next question
 function subtract() {

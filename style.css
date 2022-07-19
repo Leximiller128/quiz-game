@@ -1,7 +1,27 @@
 body {
     background-color: lightblue;
+    text-align: center;
+    color: darkgreen;
+}
+div {
+    color: rgb(67, 28, 136);
+    font: comic; 
+    font-size: 20px;
+    text-align: right;
+    
 }
 
 .hidden {
     display: none;
+}
+
+button {
+    color: darkblue;
+    font-size: 16px;
+    padding: 5 5 5;
+    margin: 5px; 
+}
+
+button:hover {
+    background-color: rgb(168, 213, 168);
 }
