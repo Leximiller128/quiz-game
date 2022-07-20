@@ -43,10 +43,30 @@ var questions = [
     options: {
       a: "Something not useful",
       b: "Something imaginary",
-      c: "fake code",
+      c: "The end of coding",
       d: "The outline for your code",
     },
     correctAnswer: "d",
+  },
+  {
+    questionText: "What is Javascript?",
+    options: {
+      a: "A website generator",
+      b: "Something imaginary",
+      c: "fake code",
+      d: "a computer programing language",
+    },
+    correctAnswer: "d",
+  },
+  {
+    questionText: "Where would you enter the code: colsole.log()?",
+    options: {
+      a: "In Javascript",
+      b: "In CSS",
+      c: "In the HTML",
+      d: "In the localStorage",
+    },
+    correctAnswer: "a",
   },
 ];
 

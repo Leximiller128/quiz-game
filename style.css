@@ -1,7 +1,9 @@
+
 body {
     background-color: lightblue;
     text-align: center;
     color: darkgreen;
+    font-family:Arial, Helvetica, sans-serif;
 }
 div {
     color: rgb(67, 28, 136);
